@@ -16,7 +16,7 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Color(0xFFF17532),
+              color: Colors.orange,
             ),
             child: Column(
               children: <Widget>[
@@ -35,7 +35,7 @@ class AppDrawer extends StatelessWidget {
                   name,
                   style: TextStyle(
                       fontSize: 20,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 5),
@@ -43,7 +43,7 @@ class AppDrawer extends StatelessWidget {
                   email,
                   style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.normal),
                 ),
               ],
@@ -52,13 +52,13 @@ class AppDrawer extends StatelessWidget {
           ListTile(
               leading: Icon(
                 Icons.exit_to_app,
-                color: Colors.red,
+                color: Colors.orange,
               ),
               title: Text(
                 "Sign Out",
                 style: TextStyle(
                   fontSize: 18,
-                  color: Colors.red,
+                  color: Colors.orange,
                 ),
               ),
               onTap: () {

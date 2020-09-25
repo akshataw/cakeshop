@@ -1,10 +1,10 @@
-import 'package:cakeshop/components/cookie_page.dart';
+import 'package:cakeshop/components/cart_details.dart';
+import 'package:cakeshop/components/products_page.dart';
 import 'package:flutter/material.dart';
 
 import '../auth.dart';
 import 'app_drawer.dart';
 import 'bottom_appbar.dart';
-import 'cake_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
@@ -32,6 +32,16 @@ class _MyHomePageState extends State<MyHomePage>
         centerTitle: true,
         title: Text("Cake shop",
             style: TextStyle(fontSize: 25.0, color: Color(0xFFF17532))),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CartDetails(),
+              ));
+            },
+          ),
+        ],
       ),
       drawer: name != null ? AppDrawer() : null,
       body: ListView(
@@ -76,9 +86,9 @@ class _MyHomePageState extends State<MyHomePage>
               child: TabBarView(
                 controller: _tabController,
                 children: <Widget>[
-                  CakePage(),
-                  CookiePage(),
-                  CakePage(),
+                  ProductsPage(item: "cakes"),
+                  ProductsPage(item: "cookies"),
+                  ProductsPage(item: "icecreams"),
                 ],
               ))
         ],

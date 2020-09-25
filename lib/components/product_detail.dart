@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'bottom_appbar.dart';
 
-class CakeDetail extends StatelessWidget {
-  final img, price, name, description;
+class ProductDetail extends StatelessWidget {
+  final type, img, price, name, description;
 
-  const CakeDetail({Key key, this.img, this.price, this.name, this.description})
+  const ProductDetail(
+      {Key key, this.type, this.img, this.price, this.name, this.description})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,9 @@ class CakeDetail extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(left: 20.0),
               child: Text(
-                "Cake",
+                type == "cookies"
+                    ? "Cookie"
+                    : type == "cakes" ? "Cake" : "Ice-cream",
                 style: TextStyle(
                   fontSize: 42.0,
                   fontWeight: FontWeight.bold,
@@ -78,7 +81,7 @@ class CakeDetail extends StatelessWidget {
             child: Container(
               width: MediaQuery.of(context).size.width - 50.0,
               child: Text(
-                description != null ? description : "Delicious Cakes",
+                description != null ? description : "Delicious Products",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16.0,
@@ -105,7 +108,7 @@ class CakeDetail extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  )))
+                  ))),
         ],
       ),
       floatingActionButton: FloatingActionButton(

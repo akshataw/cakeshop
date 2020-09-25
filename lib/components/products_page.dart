@@ -1,8 +1,12 @@
-import 'package:cakeshop/components/cake_detail.dart';
+import 'package:cakeshop/components/product_detail.dart';
 import 'package:cakeshop/model/Product.dart';
 import 'package:flutter/material.dart';
 
-class CakePage extends StatelessWidget {
+class ProductsPage extends StatelessWidget {
+  final item;
+
+  const ProductsPage({Key key, this.item}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,16 +21,24 @@ class CakePage extends StatelessWidget {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.0,
                 childAspectRatio: 0.8,
-                children: _buildCard(context),
+                children: _buildCard(context, item),
               ),
             ),
           ],
         ));
   }
 
-//  List<Padding> _buildCard(String name, int price, String img, bool added,
-//      bool isFav, String description, context) {
-  List<Padding> _buildCard(BuildContext context) {
+  List<Padding> _buildCard(BuildContext context, String item) {
+    var products = [];
+    if (item == "cookies") {
+      products = cookies;
+    } else if (item == "cakes") {
+      products = cakes;
+    } else if (item == "icecreams") {
+      products = icecreams;
+    } else {
+      products = [];
+    }
     if (products == null || products.isEmpty) {
       return const <Padding>[];
     }
@@ -36,7 +48,8 @@ class CakePage extends StatelessWidget {
         child: InkWell(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CakeDetail(
+                  builder: (context) => ProductDetail(
+                      type: item,
                       img: product.img,
                       price: product.price,
                       name: product.name,
@@ -70,8 +83,8 @@ class CakePage extends StatelessWidget {
                   Hero(
                       tag: product.img,
                       child: Container(
-                          height: 100.0,
-                          width: 100.0,
+                          height: 80.0,
+                          width: 80.0,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(70),
                               image: DecorationImage(
